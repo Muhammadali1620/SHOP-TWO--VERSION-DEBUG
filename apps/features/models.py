@@ -47,7 +47,7 @@ class Feature(models.Model):
 class FeatureValue(models.Model):
     feature = models.ForeignKey(Feature, on_delete=models.CASCADE, related_name='values')
     value_uz = models.CharField(max_length=30)
-    slug = models.SlugField(max_length=30, unique=True)
+    slug = models.SlugField(max_length=30)
     value_ru = models.CharField(max_length=30, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -67,7 +67,7 @@ class FeatureValue(models.Model):
         return f'{self.feature}:{self.value_uz}'
 
     class Meta:
-        unique_together = ('feature', 'value_uz')
+        unique_together = ('feature', 'slug')
 
 
 class ProductFeature(models.Model):

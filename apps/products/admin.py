@@ -7,6 +7,7 @@ class ProductImageInlineAdmin(admin.TabularInline):
     model = ProductImage
     min_num = 1
     max_num = 10
+    extra=2
 
 
 class ProductFeatureInline(admin.TabularInline):

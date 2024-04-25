@@ -3,7 +3,8 @@ from django.core.exceptions import ValidationError
 from apps.general.validators import phone_validate
 from apps.categories.models import SubCategory
 from django.utils.translation import get_language
-from apps.general.services import normalize_text
+from apps.general.services import next_10_days, normalize_text
+from django.utils.timezone import now
 
 
 class SocialLink(models.Model):
@@ -24,7 +25,6 @@ class SocialLink(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class PaymentMethod(models.Model):
     name = models.CharField(max_length=35)
@@ -155,6 +155,8 @@ class Coupon(models.Model):
     code = models.CharField(max_length=12, unique=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2, help_text="So'mda yoki foizda kiriting!!!")
     amount_is_percent = models.BooleanField(default=True)
+    start_date = models.DateField(default=now)
+    end_date = models.DateField(default=next_10_days())
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

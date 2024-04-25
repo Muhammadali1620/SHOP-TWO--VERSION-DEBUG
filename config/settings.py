@@ -3,6 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -19,6 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'rangefilter',
 ]
 
 INSTALLED_APPS += [

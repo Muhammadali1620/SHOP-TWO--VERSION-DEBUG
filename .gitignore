@@ -89,3 +89,4 @@ db.sqlite3
 venv
 media
 migrations/0*
+gitpush.py
